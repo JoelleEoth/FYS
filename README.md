@@ -23,3 +23,7 @@ Voorbeeld: particlesVariableA
 -Comments in ieder geval hoe elke grote functie werkt, en als een stukje code een beetje omslachtig of lastig te begrijpen is, ook daarboven.
 
 Make mistakes and learn from them!
+
+9-10-2019:
+Alle beginwaarden worden binnen startingValues(); geplaatst. Als je een groot stuk code hebt dat bij het begin moet worden uitgevoerd, maak je een aparte method.
+Als je een grote if-statement hebt, gebruik je booleans voor de if-statements.
