@@ -10,6 +10,7 @@ void startingValues() {
   playerPositionX = width/4;
   playerPositionY = height - 60;
   Hearts = new Hearts();
+  geyserWhirlpoolValues();
 }
 
 
@@ -29,14 +30,16 @@ void keyReleased() {
 //All the computations happen here
 void updateGame() {
   movement();
+  updateGeyserWhirlpool();
 }
 
 //Everything that draws things goes here
 void drawGame() {
   background(0);
-  rect(playerPositionX, playerPositionY, playerSize, playerSize);
+  drawPlayer();
   hud();
   Hearts.update();
+  drawGeyserWhirlpool();
 }
 
 

@@ -1,9 +1,3 @@
-//mitch: Comments op variables, herdoen met rectmode:center 
-//class voor leftheart en rightheart, dit is veel te veel moeite.
-
-
-
-
 void hud() {
   int score;
   PFont font;
