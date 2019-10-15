@@ -1,3 +1,13 @@
+/*
+Shrine of the Sea
+Versie: 0.06
+
+Dorus van Weelden   -   500815398
+Vivienne Majarocon  -   500825852
+[namen en studnummers]
+*/
+
+
 void setup() {
   fullScreen();
   frameRate(120);
@@ -11,6 +21,8 @@ void startingValues() {
   playerPositionY = height - 60;
   Hearts = new Hearts();
   geyserWhirlpoolValues();
+  thePlatforms = new ArrayList<Platform>();
+  thePlatforms.add(new Platform(2000, 2, 1000, height, 1));
 }
 
 
@@ -31,6 +43,9 @@ void keyReleased() {
 void updateGame() {
   movement();
   updateGeyserWhirlpool();
+  updatePlatform();
+  addPlatform(0, 2*height/3, height);
+  addPlatform(50, height/3, 2*height/3);
 }
 
 //Everything that draws things goes here
@@ -40,6 +55,7 @@ void drawGame() {
   hud();
   Hearts.update();
   drawGeyserWhirlpool();
+  drawPlatform();
 }
 
 
