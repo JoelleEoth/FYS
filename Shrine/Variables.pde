@@ -18,6 +18,7 @@ Hearts Hearts;
 ArrayList<Whirlpool> theWhirlpool;
 ArrayList<Geyser> theGeyser;
 ArrayList<Platform> thePlatforms;
+FishingHook theFishhook;
 
 //position and speed of the player
 float playerPositionX, 
@@ -34,3 +35,14 @@ int geyserWidth = 150,
   whirlpoolHeight = 250, 
   whirlpoolMovementSpeed = 12;
 float effectSpeed;
+
+//fishaak
+float 
+  fishhookX=2500,
+  fishhookY=0,
+  fishhookVX=10,  
+  hookSize=15, 
+  fishhookSpeed,  
+  fishhookPointX=500,
+  fishhookPointY=700,
+  fishhookRange =200;
