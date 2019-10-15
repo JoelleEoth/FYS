@@ -23,6 +23,7 @@ void startingValues() {
   geyserWhirlpoolValues();
   thePlatforms = new ArrayList<Platform>();
   thePlatforms.add(new Platform(2000, 2, 1000, height, 1));
+  fishhookStartingValues();
 }
 
 
@@ -46,6 +47,7 @@ void updateGame() {
   updatePlatform();
   addPlatform(0, 2*height/3, height);
   addPlatform(50, height/3, 2*height/3);
+  updateTheFishhook();
 }
 
 //Everything that draws things goes here
@@ -56,6 +58,7 @@ void drawGame() {
   Hearts.update();
   drawGeyserWhirlpool();
   drawPlatform();
+  drawFishhook();
 }
 
 
