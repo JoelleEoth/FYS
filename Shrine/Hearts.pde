@@ -7,12 +7,12 @@ class Hearts {
   float bHeartX0[] = new float [H];
   float bHeartX1[] = new float [H];
   float bHeartX2[] = new float [H];
-  boolean Lives0 = Lives > 0;
-  boolean Lives1 = Lives > 0.5; 
-  boolean Lives2 = Lives > 1;
-  boolean Lives3 = Lives > 1.5;
-  boolean Lives4 = Lives > 2;
-  boolean Lives5 = Lives > 2.5;
+  boolean Lives0 = lives > 0;
+  boolean Lives1 = lives > 0.5; 
+  boolean Lives2 = lives > 1;
+  boolean Lives3 = lives > 1.5;
+  boolean Lives4 = lives > 2;
+  boolean Lives5 = lives > 2.5;
 
 
   void update() {

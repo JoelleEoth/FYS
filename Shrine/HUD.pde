@@ -1,5 +1,4 @@
 void hud() {
-  int score;
   PFont font;
 
   font = createFont ("Arial", 32, true);   
@@ -14,6 +13,5 @@ void hud() {
   text("Time: "+timer, width/25, height/15);
 
   //score-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  score = 0;
-  text("Score: "+playerPositionY, width*5/6, height/15);
+  text("Score: "+score, width*5/6, height/15);
 }

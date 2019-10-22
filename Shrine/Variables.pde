@@ -5,8 +5,10 @@ boolean[] keysPressed = new boolean[KEY_LIMIT];
 //the size, speed and jumpheight of the player
 final int PLAYER_SIZE = 60, 
   PLAYER_JUMP_HEIGHT = 15;
-int playerSpeed; 
-float Lives = 3;
+int playerSpeed;
+float lives = 3;
+int score;
+
 //a boolean if the player is on a platform. Used for platform detection.
 boolean onPlatform;
 //the height difference from a platform to the next platform
@@ -18,14 +20,24 @@ Hearts Hearts;
 ArrayList<Whirlpool> theWhirlpool;
 ArrayList<Geyser> theGeyser;
 ArrayList<Platform> thePlatforms;
+Banana theBanana;
 FishingHook theFishhook;
+
+//green rect
+//blue rect
+Squid squid1;
+Squid squid2;
+Squid squid3;
+//red rect
+Shark shark; 
+
 
 //position and speed of the player
 float playerPositionX, 
   previousPlayerPositionY, 
   playerPositionY, 
   playerVelocityY, 
-  playerVelocityX, 
+  playerVelocityX = 3, 
   gravity = 0.3;
 
 //Geyser and Whirlprool specific variables
@@ -36,7 +48,7 @@ int geyserWidth = 150,
   whirlpoolMovementSpeed = 12;
 float effectSpeed;
 
-//fishaak
+//vishaak
 float 
   fishhookX=2500,
   fishhookY=0,

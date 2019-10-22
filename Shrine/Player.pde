@@ -16,7 +16,7 @@ void movement() {
 
 
 
-  if (checkPlatform() != -1) {
+  if (checkPlatform() != -1 && playerDropping == false) {
     //line of code that corrects for clipping with high speeds
     playerPositionY -= PLAYER_SIZE / 2 - (-playerPositionY + thePlatforms.get(checkPlatform()).platformY);
 
