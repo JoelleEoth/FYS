@@ -6,8 +6,10 @@ void movement() {
   boolean playerDropping = keysPressed[83] == true || keysPressed[DOWN] == true;
   boolean playerMovingLeft = keysPressed[65] ==true || keysPressed[LEFT] == true;
   boolean playerMovingRight = keysPressed[68] == true || keysPressed[RIGHT] == true;
+  boolean inBoundsRight = playerPositionX < 3*width/8;
+  boolean inBoundsLeft = playerPositionX > width/8;
   for (int i = 0; i < theGeyser.size(); i++) {
-    
+
     //try/catch ding dat ervoor zorgt dat er geen error komt als er geen enkele geyser op het scherm is.
     try {
       theGeyser.get(i).collisionGeyser = rectRectCollision(playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE, theGeyser.get(0).x, theGeyser.get(0).y, theGeyser.get(0).w, theGeyser.get(0).h);
@@ -18,7 +20,16 @@ void movement() {
   }
 
 
+  //move left and right within the bounds
+  if (playerMovingLeft && inBoundsLeft) {
+    playerPositionX -= 5;
+  }
+  if (playerMovingRight && inBoundsRight) {
+    playerPositionX += 5;
+  }
 
+  //if on a platform (checkPlatform returns -1 if the player is not touching any platforms) and the player isn't pressing down to drop through a platform,
+  //keep the player on the platform
   if (checkPlatform() != -1 && playerDropping == false) {
     //line of code that corrects for clipping with high speeds
     playerPositionY -= PLAYER_SIZE / 2 - (-playerPositionY + thePlatforms.get(checkPlatform()).platformY);
@@ -43,12 +54,11 @@ void movement() {
     playerPositionY -= playerVelocityY;
   }
 
-  if (playerMovingLeft && playerPositionX > width/8) {
-    playerPositionX -= playerVelocityX;
-  }
-
-  if (playerMovingRight && playerPositionX < 3*width/8) {
-    playerPositionX += playerVelocityX;
+  if (playerPositionY >= height) {
+    damage(1);
+    playerPositionX = width/4;
+    playerPositionY = random(height/2, height);
+    thePlatforms.add(new Platform(400, 2, playerPositionX, playerPositionY + PLAYER_SIZE, 3));
   }
 
   //update the position and the previous position.

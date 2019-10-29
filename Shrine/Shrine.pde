@@ -27,7 +27,7 @@ void startingValues() {
   Hearts = new Hearts();
   geyserWhirlpoolValues();
   thePlatforms = new ArrayList<Platform>();
-  thePlatforms.add(new Platform(2000, 2, 1000, height, 1));
+  thePlatforms.add(new Platform(2000, 2, 1000, height, 5));
   theBanana = new Banana(width, height - 20, 20, 10);
   fishhookStartingValues();
   enemiesValues();

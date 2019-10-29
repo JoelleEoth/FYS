@@ -1,9 +1,12 @@
 //Jennifer
 
+//total amount of squids
 final int MAX_AMOUNT_SQUIDS = 3;
+//storage of enemy squids in an arraylist
 ArrayList<Squid> squids = new ArrayList<Squid>();
 
 void enemiesValues() {
+  
   //Squid(xPosition, yPosition, size);
 
   for (int i = 0; i < MAX_AMOUNT_SQUIDS; i++)
@@ -23,7 +26,7 @@ void enemiesValues() {
 }
 
 void drawEnemies() {
-
+//forloop for the squids
   for (int i =0; i < MAX_AMOUNT_SQUIDS; i++)
   {
     squids.get(i).drawSquid();
@@ -44,7 +47,7 @@ class Shark {
     size = sharkSize;
     speedX = 4;
   }
-  //shark position and movement
+  //shark position and movement (sinus in movement)
   void drawShark() {
     noStroke();
     fill (255, 0, 0);
@@ -54,7 +57,7 @@ class Shark {
     if (x < 0) {
       x = width;
     }
-
+//player collision and health reduction
     if (rectRectCollision(playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE, x, y, size, size))
     {
       damage(1);

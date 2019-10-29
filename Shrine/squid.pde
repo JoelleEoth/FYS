@@ -1,4 +1,4 @@
-//Jeniffer
+//Jennifer
 
 class Squid {
 
@@ -13,7 +13,7 @@ class Squid {
     size = squidSize;
     speedY = randomSpeed(rSpeed);
   }
-  //squid position and movement
+  //squid position and movement (moving in sinus)
   void drawSquid() {
     noStroke();
     fill (0, 0, 255);
@@ -24,13 +24,13 @@ class Squid {
       x = width;
       y = yStart;
     }
-
+//player collision and health reduction
     if (rectRectCollision(playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE, x, y, size, size))
     {
       damage(1);
     }
   }
-
+//random speed of squids
   float randomSpeed(float speed) {
     float value = random(-speed, speed);
     /*if(value > 0) 

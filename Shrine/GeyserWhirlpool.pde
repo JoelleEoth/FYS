@@ -8,13 +8,19 @@ void geyserWhirlpoolValues() { //alle geyser values
 
 
 void updateGeyserWhirlpool() {
-  //hier spawnt de geysers en whirlpools op de platforms zelf
-  if (theGeyser.size() < 2 && isPlatformOnScreen(thePlatforms.get(thePlatforms.size()-1).platformX, thePlatforms.get(thePlatforms.size()-1).platformWidth) == false) {
-    theGeyser.add(new Geyser(thePlatforms.get(thePlatforms.size()-1).platformX+(random(-250, 250)), thePlatforms.get(thePlatforms.size()-1).platformY-125, geyserWidth, geyserHeight, 255, 40, thePlatforms.get(thePlatforms.size()-1).platformSpeed, 0.3));
+  Platform tempPlatform = thePlatforms.get(thePlatforms.size()-1);
+  float platformX = tempPlatform.platformX;
+  float platformY = tempPlatform.platformY;
+  float platformW = tempPlatform.platformWidth;
+  float platformS = tempPlatform.platformSpeed;
+  //hier spawnt de geysers en whirlpools op de platforms zelf, pas als de platforms in het scherm zijn
+  if (theGeyser.size() < 2 && isPlatformOnScreen(platformX, platformW ) == false) {
+    theGeyser.add(new Geyser(platformX+(random(-250, 250)), platformY-125, geyserWidth, geyserHeight, 255, 40, platformS, 0.3));
   }
-  if (theWhirlpool.size() < 2 && isPlatformOnScreen(thePlatforms.get(thePlatforms.size()-1).platformX, thePlatforms.get(thePlatforms.size()-1).platformWidth) == false) {
-    theWhirlpool.add(new Whirlpool(thePlatforms.get(thePlatforms.size()-1).platformX+(random(-250, 250)), thePlatforms.get(thePlatforms.size()-1).platformY-125, whirlpoolWidth, whirlpoolHeight, 255, 40, thePlatforms.get(thePlatforms.size()-1).platformSpeed, 0.3));
+  if (theWhirlpool.size() < 2 && isPlatformOnScreen(platformX, platformW) == false) {
+    theWhirlpool.add(new Whirlpool(platformX+(random(-250, 250)), platformY-125, whirlpoolWidth, whirlpoolHeight, 255, 40, platformS, 0.1));
   }
+  //dit verwijdert een geiser uit de arraylist wanneer het uit het scherm is
   for (int i =0; i<theGeyser.size(); i++) {
     Geyser aGeyser = theGeyser.get(i);
     aGeyser.updateGeyser();
@@ -24,6 +30,7 @@ void updateGeyserWhirlpool() {
       theGeyser.remove(i);
     }
   }
+  //dit verwijdert een whirlpool uit de arraylist wanneer het uit het scherm is
   for (int i = 0; i<theWhirlpool.size(); i++) {
     Whirlpool aWhirlpool = theWhirlpool.get(i);
     aWhirlpool.updateWhirlpool();
@@ -85,8 +92,8 @@ class Geyser {
 
 
 
-
-class Whirlpool { // de whirlpool class
+// de whirlpool class
+class Whirlpool {
   float x, y, w, h;
   float clr, opact;
   float m;

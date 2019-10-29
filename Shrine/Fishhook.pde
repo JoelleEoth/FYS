@@ -1,7 +1,7 @@
 //door Mina
 
 //voor de positie van het haak
-void fishhookStartingValues() {
+void fishhookStartingValues() { //de starting values en constructie voor de vishaak
   theFishhook = new FishingHook(fishhookPointX, fishhookPointY, fishhookVX);
 }
 
@@ -11,16 +11,17 @@ void drawFishhook() { //het tekend de vishaak
 }
 
 
-void updateTheFishhook() {
+void updateTheFishhook() { //hier zit alles om de vishaak te laten bewegen 
   theFishhook.swingingMotion();
   theFishhook.fishhookMovingX();
   theFishhook.collisionWithFishhook();
 }
 
 
-class FishingHook {
+class FishingHook { 
   float px, py, vx;
-  float fishhookX2=fishhookPointX, 
+  float fishhookX2=fishhookPointX, // dit heb ik gedaan zodat de lijn die ik heb getekend
+  // de punt die ik hbe getekened volgd, zodat het aan elkaar vast blijft.
     fishhookY2=fishhookPointY, angle;
 
   FishingHook(float pointX, float pointY, float speedX) { 
@@ -42,7 +43,7 @@ class FishingHook {
     fishhookX-=fishhookVX;
 
     if (fishhookX+fishhookRange<0) { // zorgt er voor dat het loopt, eigenlijk veranderd de x positie alleen lmao
-      fishhookX=width+fishhookRange;
+      fishhookX=width+fishhookRange; // dus dat ie een bepaalde range aan houd wanneer die zwaait
       fishhookPointX=width+fishhookRange;
     }
   }
@@ -58,7 +59,7 @@ class FishingHook {
   void collisionWithFishhook() {// de collision
     if (rectRectCollision(fishhookPointX, fishhookPointY, 1, 1, playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE)) {
 
-      damage(1);
+      damage(1); // damage bij de collision
       println("hetiseenvis");
     }
   }
