@@ -1,3 +1,5 @@
+//Mitch
+
 class Hearts {
   int H = 3;  
 
@@ -7,18 +9,19 @@ class Hearts {
   float bHeartX0[] = new float [H];
   float bHeartX1[] = new float [H];
   float bHeartX2[] = new float [H];
+
+
+
+  void update() {
+
+
   boolean Lives0 = lives > 0;
   boolean Lives1 = lives > 0.5; 
   boolean Lives2 = lives > 1;
   boolean Lives3 = lives > 1.5;
   boolean Lives4 = lives > 2;
   boolean Lives5 = lives > 2.5;
-
-
-  void update() {
-
-
-
+  
     float heartY0 = height/18.0, 
       heartY1 = height/11.0;
     float factor = 0.2;

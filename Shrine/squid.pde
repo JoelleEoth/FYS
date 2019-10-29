@@ -1,3 +1,5 @@
+//Jeniffer
+
 class Squid {
 
   float x, y, yStart, size, speedX, speedY;
@@ -10,7 +12,6 @@ class Squid {
     yStart = yPos;
     size = squidSize;
     speedY = randomSpeed(rSpeed);
-    x = width;
   }
   //squid position and movement
   void drawSquid() {
@@ -26,7 +27,7 @@ class Squid {
 
     if (rectRectCollision(playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE, x, y, size, size))
     {
-      lives =-0.5; //wat gebeurt er als je squid raakt
+      damage(1);
     }
   }
 

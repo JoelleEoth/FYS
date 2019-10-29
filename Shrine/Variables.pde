@@ -7,7 +7,12 @@ final int PLAYER_SIZE = 60,
   PLAYER_JUMP_HEIGHT = 15;
 int playerSpeed;
 float lives = 3;
+boolean playerImmune;
+int immunityStart;
+final int IMMUNITY_TIME = 1000;
+
 int score;
+
 
 //a boolean if the player is on a platform. Used for platform detection.
 boolean onPlatform;
@@ -37,7 +42,7 @@ float playerPositionX,
   previousPlayerPositionY, 
   playerPositionY, 
   playerVelocityY, 
-  playerVelocityX = 3, 
+  playerVelocityX, 
   gravity = 0.3;
 
 //Geyser and Whirlprool specific variables
@@ -57,4 +62,5 @@ float
   fishhookSpeed,  
   fishhookPointX=500,
   fishhookPointY=700,
-  fishhookRange =200;
+  fishhookRange =200,
+  fishHookCircleRadius = 20;

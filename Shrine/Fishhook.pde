@@ -1,3 +1,5 @@
+//door Mina
+
 //voor de positie van het haak
 void fishhookStartingValues() {
   theFishhook = new FishingHook(fishhookPointX, fishhookPointY, fishhookVX);
@@ -30,8 +32,9 @@ class FishingHook {
 
   void swingingMotion() { //update, de motion dat het heen en weer gaat
 
-    angle=frameCount/15.0; //de snelheid van het haak
-    fishhookPointX=fishhookX+fishhookRange*cos(angle);
+    angle=frameCount/30.0; //de snelheid van het haak
+
+    fishhookPointX = fishhookX + fishhookRange * cos(angle);
   }
 
 
@@ -45,15 +48,17 @@ class FishingHook {
   }
 
   void theEntireFishhook() { //het tekend de vishaak
-    line (fishhookX, fishhookY, fishhookPointX, fishhookPointY);
-    point (px, py); //het punt waarmee er word geinteracteerd
+    stroke(255);
+    line(fishhookX, fishhookY, fishhookPointX, fishhookPointY);
+    circle(fishhookPointX, fishhookPointY, fishHookCircleRadius); //het punt waarmee er word geinteracteerd
+    println(fishhookX + "yeet" + fishhookPointX);
   }
 
 
   void collisionWithFishhook() {// de collision
     if (rectRectCollision(fishhookPointX, fishhookPointY, 1, 1, playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE)) {
 
-      Hearts.H -= 1;//nog kijken hoe het -0.5 kan zijn
+      damage(1);
       println("hetiseenvis");
     }
   }
