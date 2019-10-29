@@ -41,6 +41,9 @@ class Banana {
       score += 1;//score int moet nog toegevoegd worden(zie note)
       newBanana();
     }
-    //banaan verwijnen
+    //banaan verdwijnen edge screen
+     if (xBan<=0) {
+      newBanana();
+    }
   }
 }
