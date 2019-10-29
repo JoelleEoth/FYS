@@ -1,6 +1,6 @@
 //Joelle Schmidt
 
-//IMPORTANT NOTE:Ik heb de float voor score niet dus die moet nog ingezet worden!!
+
 
 //void updateBanana(){
 //  for (int i = 0; i < theBananas.size(); i++){
@@ -38,7 +38,7 @@ class Banana {
     //score 1 omhoog
     if (rectRectCollision(xBan, yBan, sizeBan, sizeBan, playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE)) {
 
-      score += 1;//score int moet nog toegevoegd worden(zie note)
+      score += 1;
       newBanana();
     }
     //banaan verdwijnen edge screen
