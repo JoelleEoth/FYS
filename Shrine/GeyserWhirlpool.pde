@@ -8,12 +8,16 @@ void geyserWhirlpoolValues() { //alle geyser values
 
 
 void updateGeyserWhirlpool() {
+  float platformX = thePlatforms.get(thePlatforms.size()-1).platformX;
+  float platformY = thePlatforms.get(thePlatforms.size()-1).platformY;
+  float platformW = thePlatforms.get(thePlatforms.size()-1).platformWidth;
+  float platformS = thePlatforms.get(thePlatforms.size()-1).platformSpeed;
   //hier spawnt de geysers en whirlpools op de platforms zelf
-  if (theGeyser.size() < 2 && isPlatformOnScreen(thePlatforms.get(thePlatforms.size()-1).platformX, thePlatforms.get(thePlatforms.size()-1).platformWidth) == false) {
-    theGeyser.add(new Geyser(thePlatforms.get(thePlatforms.size()-1).platformX+(random(-250, 250)), thePlatforms.get(thePlatforms.size()-1).platformY-125, geyserWidth, geyserHeight, 255, 40, thePlatforms.get(thePlatforms.size()-1).platformSpeed, 0.3));
+  if (theGeyser.size() < 2 && isPlatformOnScreen(platformX, platformW ) == false) {
+    theGeyser.add(new Geyser(platformX+(random(-250, 250)), platformY-125, geyserWidth, geyserHeight, 255, 40, platformS , 0.3));
   }
-  if (theWhirlpool.size() < 2 && isPlatformOnScreen(thePlatforms.get(thePlatforms.size()-1).platformX, thePlatforms.get(thePlatforms.size()-1).platformWidth) == false) {
-    theWhirlpool.add(new Whirlpool(thePlatforms.get(thePlatforms.size()-1).platformX+(random(-250, 250)), thePlatforms.get(thePlatforms.size()-1).platformY-125, whirlpoolWidth, whirlpoolHeight, 255, 40, thePlatforms.get(thePlatforms.size()-1).platformSpeed, 0.3));
+  if (theWhirlpool.size() < 2 && isPlatformOnScreen(platformX, platformW) == false) {
+    theWhirlpool.add(new Whirlpool(platformX+(random(-250, 250)), platformY-125, whirlpoolWidth, whirlpoolHeight, 255, 40, platformS, 0.3));
   }
   for (int i =0; i<theGeyser.size(); i++) {
     Geyser aGeyser = theGeyser.get(i);
