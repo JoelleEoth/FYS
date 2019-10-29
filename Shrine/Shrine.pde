@@ -1,11 +1,16 @@
 /*
 Shrine of the Sea
-Versie: 0.06
-
-Dorus van Weelden   -   500815398
-Vivienne Majarocon  -   500825852
-[namen en studnummers]
-*/
+ Versie: 0.07
+ 
+ Dorus van Weelden   -   500815398
+ Vivienne Majarocon  -   500825852
+ Jennifer Voogt      -   500823819
+ Mina Nakamura       -   500824922
+ Joelle Schmidt      -   500825264
+ Mitchell de Bruyn   -   500816391
+ 
+ [namen en studnummers]
+ */
 
 
 void setup() {
@@ -23,7 +28,9 @@ void startingValues() {
   geyserWhirlpoolValues();
   thePlatforms = new ArrayList<Platform>();
   thePlatforms.add(new Platform(2000, 2, 1000, height, 1));
+  theBanana = new Banana(width, height - 20, 20, 10);
   fishhookStartingValues();
+  enemiesValues();
 }
 
 
@@ -45,8 +52,7 @@ void updateGame() {
   movement();
   updateGeyserWhirlpool();
   updatePlatform();
-  addPlatform(0, 2*height/3, height);
-  addPlatform(50, height/3, 2*height/3);
+  theBanana.updateBanana();
   updateTheFishhook();
 }
 
@@ -58,12 +64,13 @@ void drawGame() {
   Hearts.update();
   drawGeyserWhirlpool();
   drawPlatform();
+  theBanana.drawBanana();
   drawFishhook();
+  drawEnemies();
 }
-
 
 
 void draw() {
   updateGame();
   drawGame();
-}
+      }

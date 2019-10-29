@@ -1,4 +1,5 @@
 //Bepaald de bewegingen.
+//Dorus
 void movement() {
   //a boolean that checks if the player is trying to jump or not
   boolean playerJumping = keysPressed[87] == true || keysPressed[UP] == true;
@@ -6,6 +7,8 @@ void movement() {
   boolean playerMovingLeft = keysPressed[65] ==true || keysPressed[LEFT] == true;
   boolean playerMovingRight = keysPressed[68] == true || keysPressed[RIGHT] == true;
   for (int i = 0; i < theGeyser.size(); i++) {
+    
+    //try/catch ding dat ervoor zorgt dat er geen error komt als er geen enkele geyser op het scherm is.
     try {
       theGeyser.get(i).collisionGeyser = rectRectCollision(playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE, theGeyser.get(0).x, theGeyser.get(0).y, theGeyser.get(0).w, theGeyser.get(0).h);
     }
@@ -42,14 +45,10 @@ void movement() {
 
   if (playerMovingLeft && playerPositionX > width/8) {
     playerPositionX -= playerVelocityX;
-    {
-    }
   }
 
-  if (playerMovingRight && playerPositionX < width/(8/2)) {
+  if (playerMovingRight && playerPositionX < 3*width/8) {
     playerPositionX += playerVelocityX;
-    {
-    }
   }
 
   //update the position and the previous position.
@@ -73,7 +72,19 @@ int checkPlatform() {
   return -1;
 }
 
+void damage(float damageAmount) {
+  if (playerImmune == true) {
+    if (immunityStart <= millis() - IMMUNITY_TIME) 
+      playerImmune = false;
+  } else {
+    lives -= damageAmount/2;
+    playerImmune = true;
+    immunityStart = millis();
+  }
+}
 
+
+//Door viv
 //hoe je deze boolean leest: playerX, playerY, playerWidth, playerHeight, objectX, objectY, objectWidth,  objectHeight 
 //deze collision boolean kan je overal voor gebruiken, zolang het rect/rect is.
 boolean rectRectCollision(float x1, float y1, float width1, float height1, float x2, float y2, float width2, float height2) {

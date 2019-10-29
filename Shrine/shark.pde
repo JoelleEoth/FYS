@@ -1,3 +1,5 @@
+//Jennifer
+
 final int MAX_AMOUNT_SQUIDS = 3;
 ArrayList<Squid> squids = new ArrayList<Squid>();
 
@@ -55,7 +57,7 @@ class Shark {
 
     if (rectRectCollision(playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE, x, y, size, size))
     {
-      lives =-0.5; //wat gebeurt er als je shark raakt
+      damage(1);
     }
   }
   //random voor x position

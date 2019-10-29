@@ -45,7 +45,8 @@ void drawGeyserWhirlpool() {
   }
 }
 
-class Geyser { //de class geiser
+//de class geiser
+class Geyser { 
   float x, y, w, h;
   float clr, opact;
   float m;

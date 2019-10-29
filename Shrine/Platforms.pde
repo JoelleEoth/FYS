@@ -1,8 +1,13 @@
+//Dorus
+
 void updatePlatform() {
   for (int i = 0; i < thePlatforms.size(); i++) {
     Platform platform = thePlatforms.get(i);
     platform.updatePlatform();
   }
+  addPlatform(0, 2*height/3, height);
+  addPlatform(50, height/3, 2*height/3);
+
 }
 
 
@@ -57,6 +62,7 @@ class Platform {
   }
 }
 
+//viv
 // dit telt hoeveel platforms op het scherm zijn
 boolean isPlatformOnScreen(float x, float w) {
   if (x-(w/2)<width) {
