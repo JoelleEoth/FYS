@@ -52,7 +52,6 @@ class FishingHook {
     stroke(255);
     line(fishhookX, fishhookY, fishhookPointX, fishhookPointY);
     circle(fishhookPointX, fishhookPointY, fishHookCircleRadius); //het punt waarmee er word geinteracteerd
-    println(fishhookX + "yeet" + fishhookPointX);
   }
 
 
