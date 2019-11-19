@@ -30,7 +30,7 @@ class Banana {
     //banaan
     noStroke();
     fill(255, 250, 88);//kleur banaan
-    rect(xBan, yBan, sizeBan, sizeBan);//banaan
+   image(final banana img.png,xBan, yBan, sizeBan, sizeBan);//banaan
   }
   //Collision met player&banana
   void updateBanana() {
