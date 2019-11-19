@@ -1,4 +1,4 @@
-/*TEst
+/*
 Shrine of the Sea
  Versie: 0.07
  
@@ -11,6 +11,8 @@ Shrine of the Sea
  
  [namen en studnummers]
  */
+importprocessing.sound.*;
+SoundFile backgroundMusic;
 
 
 void setup() {
@@ -19,6 +21,8 @@ void setup() {
   rectMode(CENTER);
   background(0);
   startingValues();
+  backgroundMusic = new SoundFile(this, "FYS_music.wav"); //zet naam musicfile hierin
+  backgroundMusic.loop();
 }
 
 void startingValues() {
