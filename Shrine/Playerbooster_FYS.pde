@@ -1,5 +1,5 @@
 //Point multiplier
-//De variabelen van shark (x,y,size) moeten specifiekere namen worden gegeven(Jen)
+
 //Joelle Schmidt
 class Booster {
   int xHB;
