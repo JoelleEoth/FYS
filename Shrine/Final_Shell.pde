@@ -1,6 +1,15 @@
-void newShell() {
+void shellStartingValues() {
   theShell = new Shell(width, height - 20, 20, 2);
 }
+
+void drawShell(){
+theShell.theWholeShell();
+}
+
+void updateShell(){
+theShell.mechanicsShell();
+}
+
 class Shell {
   int xShell;//x shell
   int yShell;//y shell
@@ -14,7 +23,7 @@ class Shell {
     speedShell = speed;
   }
 
-  void drawShell() {
+  void theWholeShell() {
     rectMode(CENTER);
     //shell
     noStroke();
@@ -22,7 +31,7 @@ class Shell {
     rect(xShell, yShell, sizeShell, sizeShell);//shell
   }
   //Collision met player&Shell
-  void updateShell() {
+  void mechanicsShell() {
     xShell -= speedShell;
     //Shell verdwijnen
     if (rectRectCollision(xShell, yShell, sizeShell, sizeShell, playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE)) {
