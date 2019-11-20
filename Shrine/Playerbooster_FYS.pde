@@ -1,15 +1,5 @@
 //Point multiplier
 
-//Joelle Schmidt
-class Booster {
-  int xHB;
-  int yHB;
-  int sizeHB;
-  int scoreBooster;
-  int timeStarts;
-
-  boolean Playerbooster={xHB+sizeHB<=xPlayer&&yHB+sizeHB<=yPlayer};
-
   void setupBooster() {
 
 
@@ -23,6 +13,18 @@ class Booster {
 
    
   }
+
+//Joelle Schmidt
+class Booster {
+  int xHB;
+  int yHB;
+  int sizeHB;
+  int scoreBooster;
+  int timeStarts;
+
+  boolean Playerbooster={xHB+sizeHB<=xPlayer&&yHB+sizeHB<=yPlayer};
+
+
 
   void updateScoreBooster() {
     if (Playerbooster == true) {
