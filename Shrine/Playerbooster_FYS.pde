@@ -10,7 +10,7 @@ class Booster {
 
   boolean Playerbooster={xHB+sizeHB<=xPlayer&&yHB+sizeHB<=yPlayer};
 
-  void setup() {
+  void setupBooster() {
 
 
     rectMode(CENTER);
@@ -24,7 +24,7 @@ class Booster {
    
   }
 
-  void ScoreBooster() {
+  void updateScoreBooster() {
     if (Playerbooster == true) {
       scoreBooster = 2;
     } else 
