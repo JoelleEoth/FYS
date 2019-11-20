@@ -35,7 +35,8 @@ void startingValues() {
   theBanana = new Banana(width, height - 20, 20, 10);
   fishhookStartingValues();
   enemiesValues();
-  theShell = new Shell(width, height - 20, 20, 2);
+  shellStartingValues();
+  boosterStartingValues();
 }
 
 
@@ -59,7 +60,8 @@ void updateGame() {
   updatePlatform();
   theBanana.updateBanana();
   updateTheFishhook();
-  Shell.updateShell();
+  updateShell();
+  updateBooster();
 }
 
 //Everything that draws things goes here
@@ -73,7 +75,8 @@ void drawGame() {
   theBanana.drawBanana();
   drawFishhook();
   drawEnemies();
-  theShell.drawShell();
+ drawShell();
+  drawHitbox();
 }
 
 
