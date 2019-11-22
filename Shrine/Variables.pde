@@ -27,6 +27,8 @@ ArrayList<Geyser> theGeyser;
 ArrayList<Platform> thePlatforms;
 Banana theBanana;
 FishingHook theFishhook;
+Shell theShell;
+Booster theBooster;
 
 //green rect
 //blue rect
@@ -64,3 +66,11 @@ float
   fishhookPointY=700,
   fishhookRange =200,
   fishHookCircleRadius = 20;
+  
+  //shell
+  float
+   xShell = random(0,width),
+    yShell = random(PlayerPositionY+10,PlayerPositionY+100),
+    sizeShell = 20,
+    speedShell += random(8,10);
+ 
