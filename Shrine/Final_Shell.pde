@@ -16,12 +16,7 @@ class Shell {
   int sizeShell;//size shell
   float speedShell;//speed shell
 
-  Shell(int x, int y, int size, float speed) {
-    xShell = x;
-    yShell = y;
-    sizeShell = size;
-    speedShell = speed;
-  }
+
 
   void theWholeShell() {
     rectMode(CENTER);
