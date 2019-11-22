@@ -15,6 +15,11 @@ class Shell {
   int yShell;//y shell
   int sizeShell;//size shell
   float speedShell;//speed shell
+   int timeStarts;
+   
+   //veranderen naar Viv version
+  boolean Playerbooster={xShell+sizeShell<=xPlayer&&yShell<=yPlayer};
+
 
 
 
@@ -34,6 +39,19 @@ class Shell {
       
       newShell();
     }
+    if (Playerbooster == true) {
+      scoreBooster = 2;
+    } else 
+    {
+      scoreBooster = 1;
+    }
+
+    if (Playerbooster == true && timeStarts + 5000 > millis()) {
+      Playerbooster = false;
+         }
+      }
+    }
+    
     //Shell verdwijnen edge screen
     if (xShell <= 0) {
       newShell();
