@@ -73,4 +73,5 @@ float
     yShell = random(PlayerPositionY+10,PlayerPositionY+100),
     sizeShell = 20,
     speedShell += random(8,10);
+    timeStarts = millis();
  
