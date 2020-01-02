@@ -88,6 +88,7 @@ void updateGame() {
       gameOver();
       gameStart = false;
     }
+    queryShell();
   }
 }
 
@@ -111,7 +112,6 @@ void drawGame() {
     drawEnemies();
     drawShell();
     drawShrine();
-    //queryShell();
   }
   deathscreen();
 }
