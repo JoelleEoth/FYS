@@ -10,7 +10,7 @@ void spawnShark() {
   float platformY = tempPlatform.platformY;
   float platformS = tempPlatform.platformSpeed;
   //Shark(xPosition, yPosition, size);
-  shark = new Shark (platformX, platformY-100, platformS);
+  shark = new Shark (platformX, platformY-50, platformS);
 }
 
 void updateShark() {
@@ -23,16 +23,16 @@ void drawShark() {
 
 class Shark {
 
-int sharkWidth = 150, 
-  sharkHeight = 60;
+  int sharkWidth = 400;
+  int sharkHeight = (int)(sharkWidth / 2.5);
 
   float x, y, speed;
   float xStart;  
 
   //constructor
   Shark(float tempX, float tempY, float tempSpeed) {
-    x = tempY;
-    y = tempX;
+    x = tempX;
+    y = tempY;
     xStart = tempX;
     speed = tempSpeed;
   }
@@ -56,9 +56,6 @@ int sharkWidth = 150,
   }
 
   void drawShark() {
-    noStroke();
-    fill (255, 0, 0);
     image(sharkImg, x, y, sharkWidth, sharkHeight);
   }
-
 }

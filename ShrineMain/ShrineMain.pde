@@ -13,13 +13,14 @@ Shrine of the Sea
 import processing.sound.*;
 import de.bezier.data.sql.*;
 
-StatScreen stat;
+//declare if the database that is connected to is oege or localhost. 
+boolean localHost = true; 
 
 int stage = 0;
 int playerId;
 String[] achievementName;
 String[] achievementDescription;
-int[] achievementId = { 1, 2, 3, 4, 5, 6, 7 };
+int[] achievementId = { 1, 2, 3, 4, 5, 6, 7 }; //waar is berend botje gebleven
 String unlockedOn;
 boolean[] achievementGet;
 int gameStartTime;
@@ -72,7 +73,6 @@ void variableInitialisation() {
 
 
 void createClasses() {
-
   hearts = new Hearts();
   loginMenu = new LoginMenu();
   mainMenu = new MainMenu();
@@ -92,7 +92,7 @@ void createClasses() {
   bananaArrayListMain = new ArrayList<Banana>();
   //offscreen spawn so it exists but doesn't interfere, format x, y, speed
   shell = new Shell(OFFSCREEN, OFFSCREEN, 0);
-  squidArrayList = new ArrayList<Squid>(MAX_AMOUNT_SQUIDS);
+  squidArrayList = new ArrayList<Squid>();
   //offscreen spawn so it exists but doesn't interfere, format x, y, width, height
   shark = new Shark (OFFSCREEN, OFFSCREEN, 0);
   deathScreen = new DeathScreen();
@@ -172,8 +172,6 @@ void drawGame() {
     drawSquids();
     drawShell();
     drawShrine();
-    if (spawnSquids)
-    text(1, 400, 400);
   }
 }
 
@@ -219,8 +217,8 @@ void draw() {
     queries.highscoreQueries();
     queries.getAchievements();
     break;
-    
-    case 6:
+
+  case 6:
     statScreen2.updateScreen();
     statScreen2.drawScreen();
   }

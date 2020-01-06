@@ -4,15 +4,20 @@ ArrayList<Squid> squidArrayList;
 
 //Method word aangeroepen in de mainscript in startingValues();
 void spawnSquid() {
-  float randomSize = random(70, 120);
+  float randomSize = random(50, 100);
   float randomX = width + random(width);
   float randomY = random(0+randomSize, height - randomSize);
-  squidArrayList.add(new Squid(randomX, randomY, randomSize));
+  squidArrayList.add(new Squid(randomX, randomY, randomSize, randomSize * 2.74));
 }
 
 void updateSquids() {
-  for (Squid squid : squidArrayList) {
-    squid.updateSquid();
+  text(squidArrayList.size(), 400, 400);
+
+  for (int i = 0; i < squidArrayList.size(); i++) {
+    squidArrayList.get(i).updateSquid();
+  }
+  if (spawnSquids && squidArrayList.size() < MAX_AMOUNT_SQUIDS && random(1) < 0.01) {
+    spawnSquid();
   }
 }
 
@@ -28,29 +33,26 @@ void drawSquids() {
 
 class Squid {
 
-  float x, y, yStart, size, speedX = random(2, 3);
+  float x, y, yStart, squidWidth, squidHeight, speedX = random(2, 3);
   float phase = random(0, TWO_PI);
   float frequency = random(20, 50);
   float amplitude = random(50, 200);
   //constructor
-  Squid(float tempX, float tempY, float tempSize) {
+  Squid(float tempX, float tempY, float tempWidth, float tempHeight) {
     x = tempX;
     y = tempY;
     yStart = tempY;
-    size = tempSize;
+    squidWidth = tempWidth;
+    squidHeight = tempHeight;
   }
 
-  void updateSquid() {
-
+  void updateSquid() {    
     //Als de squid links buiten het scherm gaat, zet het dan terug naar rechts van het scherm.   
-    for (Squid squid : squidArrayList) {
-      if (squid.x + squid.size/2 < 0) {
-        squidArrayList.remove(squid);
+    for (int i = 0; i < squidArrayList.size(); i++) {
+      Squid tempSquid = squidArrayList.get(i);
+      if (tempSquid.x + tempSquid.squidWidth/2 < 0) {
+        squidArrayList.remove(tempSquid);
       }
-    }
-
-    if (spawnSquids && squidArrayList.size() < MAX_AMOUNT_SQUIDS && random(1) < 0.01) {
-      spawnSquid();
     }
 
 
@@ -60,7 +62,7 @@ class Squid {
     x -= speedX;
 
     //player collision and health reduction
-    if (rectRectCollision(playerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT, x, y, size, size))
+    if (rectRectCollision(playerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT, x, y, squidWidth, squidHeight))
     {
       damage(1);
       squidCount++;
@@ -72,6 +74,6 @@ class Squid {
 
   //squid position and movement (moving in sinus)
   void drawSquid() {
-    image (squidImg, x, y, size, size);
+    image (squidImg, x, y, squidWidth, squidHeight);
   }
 }

@@ -49,6 +49,7 @@ class Particle {
   }
 
   void drawParticle() {
+    noStroke();
     fill(clr, o);
     ellipse(x, y, s, s);
   }

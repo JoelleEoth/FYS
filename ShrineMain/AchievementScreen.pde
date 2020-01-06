@@ -1,4 +1,4 @@
-
+StatScreen stat;
 StatScreen statScreen;
 class StatScreen { 
   float achievementX = width/4;

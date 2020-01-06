@@ -110,7 +110,6 @@ class mySQLQueries {
   void userQueries() {          //Method for queries related to the "Players can login" functionality)
 
     if (userCreated == true && inserted == false) {
-
       if (mysql.connect()) {
         mysql.query("INSERT INTO Player(username, password) VALUES('" + userName + "', '" + userPassword + "');"); //Query will add new user to the database
         stage = 2; //Game will start with new user 

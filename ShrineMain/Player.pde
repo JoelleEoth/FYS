@@ -5,8 +5,9 @@
 final int PLAYER_WIDTH = 50, 
   PLAYER_HEIGHT = 78, 
   PLAYER_JUMP_HEIGHT = 15;
-int playerSpeed;
-final float HITBOX_IMAGE_DIFF_FACTOR = 1.28;
+final int PLAYER_MAX_HORIZONTAL_SPEED = 8;
+final float HITBOX_IMAGE_DIFF_FACTOR = 1.28, 
+  PLAYER_ACCELLERATION = 1;
 
 //position and speed of the player
 float playerPositionX, 
@@ -14,6 +15,7 @@ float playerPositionX,
   playerPositionY, 
   playerVelocityY, 
   playerVelocityX, 
+  playerOnPlatformSpeed, 
   gravity = 0.3;
 
 
@@ -24,8 +26,8 @@ void movement() {
   boolean playerMovingLeft = keysPressed[65] ==true || keysPressed[LEFT] == true;
   boolean playerMovingRight = keysPressed[68] == true || keysPressed[RIGHT] == true;
   boolean inBoundsTop = playerPositionY-(PLAYER_HEIGHT/2) > 0;
-  boolean inBoundsRight = playerPositionX+(PLAYER_WIDTH/2) < width;
-  boolean inBoundsLeft = playerPositionX-(PLAYER_WIDTH/2) > 0;
+  boolean inBoundsRight = playerPositionX+(PLAYER_WIDTH/2) <= width;
+  boolean inBoundsLeft = playerPositionX-(PLAYER_WIDTH/2) >= 0;
   for (int i = 0; i < geyserArrayList.size(); i++) {
 
     //try/catch ding dat ervoor zorgt dat er geen error komt als er geen enkele geyser op het scherm is.
@@ -39,23 +41,45 @@ void movement() {
 
 
   //move left and right within the bounds
-  if (playerMovingLeft && inBoundsLeft) {
-    playerPositionX -= 5;
-  }
-  if (playerMovingRight && inBoundsRight) {
-    playerPositionX += 5;
+  if (playerMovingLeft) {
+    if (playerVelocityX > -PLAYER_MAX_HORIZONTAL_SPEED) {
+      playerVelocityX -= PLAYER_ACCELLERATION;
+    }
+  } else if (playerMovingRight && inBoundsRight) {
+    if (playerVelocityX < PLAYER_MAX_HORIZONTAL_SPEED) {
+      playerVelocityX += PLAYER_ACCELLERATION;
+    }
+  } else { //make the velocity approach 0 if no input is pressed
+
+    if (playerVelocityX < 0.5 && playerVelocityX > -0.5) {
+      playerVelocityX = 0;
+    } else if (playerVelocityX > 0) {
+      playerVelocityX -= PLAYER_ACCELLERATION/2;
+    } else {
+      playerVelocityX += PLAYER_ACCELLERATION/2;
+    }
   }
 
+  //if offscreen, no speed
+  if (!inBoundsLeft) {
+    playerVelocityX = 0;
+    playerPositionX = PLAYER_WIDTH/2;
+  }
+  if (!inBoundsRight) {
+    playerVelocityX = 0;
+    playerPositionX = width -(PLAYER_WIDTH/2);
+  }
   //if on a platform (checkPlatform returns -1 if the player is not touching any platforms) and the player isn't pressing down to drop through a platform,
   //keep the player on the platform
   //if the player is on a platform in the arraylist platformArrayListMain then return the index to which specific platform it is
   int platformIndex = checkPlatform();
 
-
   if (platformIndex != -1 && previousPlayerPositionY <= platformArrayListMain.get(platformIndex).platformY + PLAYER_HEIGHT/2) {
     //line of code that corrects for clipping with high speeds
     playerPositionY -= PLAYER_HEIGHT / 2 - (-playerPositionY + platformArrayListMain.get(platformIndex).platformY);
-
+    
+    //
+    playerOnPlatformSpeed = platformArrayListMain.get(platformIndex).platformSpeed / 2;
     //if the player is jumping, initiate a jump. Else, set its velocity to 0 to mimic the normal force of the platform.
     if (playerJumping) {
       playerVelocityY = PLAYER_JUMP_HEIGHT;
@@ -67,6 +91,7 @@ void movement() {
       }
     }
   } else {
+    playerOnPlatformSpeed = 0;
     //if the player is in the air, apply gravity to its speed
     playerVelocityY -= gravity;
     if (inBoundsTop == false) {
@@ -89,6 +114,8 @@ void movement() {
   //update the position and the previous position.
   previousPlayerPositionY = playerPositionY;
   playerPositionY -= playerVelocityY;
+  playerPositionX += playerVelocityX;
+  playerPositionX -= playerOnPlatformSpeed;
 }
 
 int playerDrawFrame;

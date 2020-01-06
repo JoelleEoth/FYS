@@ -1,9 +1,18 @@
-v 1.0.3
+v 1.0.3 /dorus
 
--added playerfeedback for damage
+-added playerfeedback for damage 
 
+-shark fix
 
-v 1.0.2:
+-added local database support -> see localhost variable
+
+-added experimental drag from the platforms and updated the way horizontal movement works
+
+-changed the sprites of enemies to correct versions (lower contrast and slightly pastel colors)
+
+-squids were somehow back to old hitboxes. fixed.
+
+v 1.0.2 /dorus
 
 -database code polish
 
@@ -11,7 +20,7 @@ v 1.0.2:
 
 -deathscreen
 
-changelog rewrite:
+changelog rewrite /dorus
 
 -changed object format to:
 
