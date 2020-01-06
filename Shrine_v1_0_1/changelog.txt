@@ -1,0 +1,55 @@
+v 1.0.3
+
+-added playerfeedback for damage
+
+
+v 1.0.2:
+
+-database code polish
+
+-stats screen
+
+-deathscreen
+
+changelog rewrite:
+
+-changed object format to:
+
+	spawnfunc
+	updatefunc
+	drawfunc
+	[class]
+	
+-changed how initialising works
+	
+	variables and classes now have seperate init functions
+	
+	
+-seperated geysers and whirlpools
+
+-added OFFSCREEN variable that can be used for x and y values if object is offscreen
+
+-changed how the shell works, it now has a score multiplier which increases exponentially > potential for juice
+
+-seperated enemies into seperate classes with their own spawn update etc functions
+
+-changed some variable names:
+	
+	most notably a lot of classes names
+	removed "the[name]" from a lot of classes
+	added "main" to some variable names that could have multiple variables with that specific class (shrineplatform is something different from the main array)
+	similarly, added [name]ArrayList to arraylists
+	
+-changed enemy spawn conditions
+
+-removed unutilised variables
+
+-placed all variables in front of their respective parts
+
+-playersize split into Playerwidth and playerheight
+
+-finally debugged player (sort of it still has some bugs)
+
+-generalfunctions tab met functies die niet bij een specifieke class horen
+
+

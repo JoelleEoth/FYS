@@ -1,5 +1,17 @@
 String levelParts;
 
+boolean[] spawnConditionArray = new boolean[5];
+boolean spawnGeyser, 
+  spawnWhirlpool, 
+  spawnSquids, 
+  spawnSharks,  
+  platformDecline;
+
+int timeLevel2 = 10000, 
+  timeLevel3 = 20000, 
+  timeLevel4 = 30000, 
+  timeLevel5 = 40000;
+
 void updateLevel() {
 
   checkGameState();
@@ -8,8 +20,7 @@ void updateLevel() {
   spawnWhirlpool = spawnConditionArray[1];
   spawnSquids = spawnConditionArray[2];
   spawnSharks = spawnConditionArray[3];
-  spawnFishhook = spawnConditionArray[4];
-  platformDecline = spawnConditionArray[5];
+  platformDecline = spawnConditionArray[4];
 }
 
 void checkGameState() {
@@ -24,15 +35,15 @@ void checkGameState() {
   */
   
   if (gameStartTime + millis() < timeLevel2) {
-    levelParts = "101000";
+    levelParts = "10100";
   } else if (gameStartTime + millis() < timeLevel3) {
-    levelParts = "110100";
+    levelParts = "11010";
   } else if (gameStartTime + millis() < timeLevel4) {
-    levelParts = "001110";
+    levelParts = "00110";
   } else if (gameStartTime + millis() < timeLevel5) {
-    levelParts = "111110";
+    levelParts = "11110";
   } else {
-    levelParts = "111111";
+    levelParts = "11111";
   }
 }
 

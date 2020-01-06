@@ -1,56 +1,81 @@
-//Joelle Schmidt
+//Vivienne Majarocon
 
-void bananaValues() {
-  bananas = new ArrayList<Banana>();
+//sinus
+
+ArrayList<Banana> bananaArrayListMain;
+float bananaSize = 50;
+int spawnBanana = 2;
+
+void spawnBanana1() {
+  Platform tempPlatform = platformArrayListMain.get(platformArrayListMain.size()-1);
+  float platformX = tempPlatform.platformX;
+  float platformY = tempPlatform.platformY;
+  float platformW = tempPlatform.platformWidth;
+  float platformS = tempPlatform.platformSpeed;
+  if (frameCount%120 == 0) {
+    bananaArrayListMain.add( new Banana(random(platformX-(platformW/2), platformX+(platform/2)), platformY-(bananaSize/2), platformS));
+  }
 }
+
+void spawnBanana2() {
+  Platform tempPlatform = platformArrayListMain.get(platformArrayListMain.size()-1);
+  float platformX = tempPlatform.platformX;
+  float platformY = tempPlatform.platformY;
+  float platformW = tempPlatform.platformWidth;
+  float platformS = tempPlatform.platformSpeed;
+  if (frameCount%120 == 0) {
+    for ( int i = 1; i <= 3; i ++) {
+      if ( i <= bananaArrayListMain.size()) {
+        bananaArrayListMain.add( new Banana((platformX*i/3), platformY-(bananaSize/2), platformS));
+      }
+    }
+  }
+}
+
 void updateBanana() {
-  spawnBanana();
-  for ( Banana banana : bananas ) {
+  bananaManager();
+  for ( Banana banana : bananaArrayListMain ) {
     banana.updateBanana();
   }
 
-  for ( int i = 0; i < bananas.size(); i++) {
-    Banana aBanana = bananas.get(i);
-    if (rectRectCollision(aBanana.xBan, aBanana.yBan, bananaSize, bananaSize, playerPositionX, playerPositionY, PLAYER_SIZE, PLAYER_SIZE)) {
-      bananas.remove(i);
-      score += scoreUp; 
+  for ( int i = 0; i < bananaArrayListMain.size(); i++) {
+    Banana aBanana = bananaArrayListMain.get(i);
+    if (rectRectCollision(aBanana.xBan, aBanana.yBan, bananaSize, bananaSize, playerPositionX, playerPositionY, PLAYER_WIDTH, PLAYER_HEIGHT)) {
+      bananaArrayListMain.remove(i);
+      score += scoreMultiplier; 
       bananaSound.play();
+      bananaCount++;
     }
     if ( aBanana.xBan + (bananaSize/2) < 0 ) {
-      bananas.remove(i);
+      bananaArrayListMain.remove(i);
     }
+  }
+
+  if (bananaArrayListMain.size() <= 0) {
+    spawnBanana = (int)random(4)/2;
   }
 }
 
 
 void drawBanana() {
-  for ( Banana banana : bananas ) {
+  for ( Banana banana : bananaArrayListMain ) {
     banana.drawBanana();
   }
 }
 
-void spawnBanana() {
-  Platform tempPlatform = thePlatforms.get(thePlatforms.size()-1);
-  float platformX = tempPlatform.platformX;
-  float platformY = tempPlatform.platformY;
-  float platformW = tempPlatform.platformWidth;
-  float platformS = tempPlatform.platformSpeed;
+void bananaManager() {
+
   //dit spawn de banaan, de if frameCount in de if statement bepaald hoeveel bananen spawn in het spel
   switch(spawnBanana) {
   case 1:
-    if ( bananas.size() < 1) {
-      bananas.add( new Banana(random(platformX-(platformW/2), platformX+(platform/2)), platformY-(bananaSize/2), platformS));
-    }
+    spawnBanana1();
     break;
   case 2:
-    if ( bananas.size() < 3) {
-      for ( int i = 1; i < platformW*2; i ++) {
-        bananas.add( new Banana((platformX*i)/3, platformY-(bananaSize/2), platformS));
-      }
-    } 
+    spawnBanana2();
     break;
   }
 }
+
 
 
 class Banana {
@@ -74,9 +99,5 @@ class Banana {
   //Collision met player&banana
   void updateBanana() {
     xBan -= speedBan;
-
-    if ( bananas.size() == 0 ) {
-      spawnBanana = (int)random(2);
-    }
   }
 }
